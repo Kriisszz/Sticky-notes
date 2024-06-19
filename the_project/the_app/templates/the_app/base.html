@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Sticky Notes{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<style>
+    /* Had to implement this solution because, for some reason It did not see the background image
+    in the css file even though the pathing was correct. */
+    body {
+        background: url("{% static 'images/background.jpg' %}") no-repeat center center fixed;
+        background-size: cover;
+    }
+    .container {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 8px;
+    }
+    .header {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        border-radius: 8px;
+        color: #fff;
+        text-align: center;
+    }
+</style>
+<body>
+    <div class="container mt-5">
+        <div class="header mb-4">
+            <h1>Sticky Notes</h1>
+            {% if user.is_authenticated %}
+                <a class="btn btn-light" href="{% url 'dashboard' %}">Dashboard</a>
+                <a class="btn btn-light" href="{% url 'post_list' %}">Bulletin Board</a>
+                {% if user.is_superuser %}
+                    <a class="btn btn-light" href="{% url 'admin_dashboard' %}">Admin Dashboard</a>
+                    <a class="btn btn-light" href="{% url 'post_add' %}">Add Bulletin Post</a>
+                {% endif %}
+                <a class="btn btn-light" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a class="btn btn-light" href="{% url 'login' %}">Login</a>
+                <a class="btn btn-light" href="{% url 'register' %}">Register</a>
+            {% endif %}
+        </div>
+        {% if messages %}
+            <div class="messages mb-4">
+                {% for message in messages %}
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

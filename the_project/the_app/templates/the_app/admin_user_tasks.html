@@ -1,0 +1,18 @@
+{% extends 'the_app/base.html' %}
+
+{% block title %}Tasks of {{ user.username }} - Sticky Notes{% endblock %}
+
+{% block content %}
+<h2>Tasks of {{ user.username }}</h2>
+<a href="{% url 'admin_add_task' user.id %}">Add Task</a>
+<ul>
+    {% for task in tasks %}
+        <li>
+            {{ task.title }} - {{ task.date }} - {% if task.completed %}Completed{% else %}Pending{% endif %}
+            <a href="{% url 'admin_edit_task' task.id %}">Edit Task</a>
+            <a href="{% url 'admin_delete_task' task.id %}">Delete Task</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+

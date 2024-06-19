@@ -1,0 +1,2 @@
+Username:administrator email:administrator@gmail.com password: Icand0anything /its a superuser/
+Username:Test_user password: Passw0rdfortest

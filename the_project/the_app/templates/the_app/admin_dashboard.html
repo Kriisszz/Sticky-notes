@@ -1,0 +1,23 @@
+{% extends 'the_app/base.html' %}
+
+{% block title %}Admin Dashboard - Sticky Notes{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="my-3">Admin Dashboard</h2>
+    <ul class="list-group">
+        {% for user in users %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    {{ user.username }} - {{ user.email }}
+                    <a class="btn btn-info btn-sm ml-3" href="{% url 'admin_user_tasks' user.id %}">View Tasks</a>
+                    <a class="btn btn-danger btn-sm ml-2" href="{% url 'admin_delete_user' user.id %}">Delete User</a>
+                    <a class="btn btn-primary" href="{% url 'post_add' %}">Add Bulletin Post</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+
+

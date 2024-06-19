@@ -1,0 +1,13 @@
+{% extends 'the_app/base.html' %}
+
+{% block title %}Home - Sticky Notes{% endblock %}
+
+{% block content %}
+<div class="welcome">
+    {% if user.is_authenticated %}
+    {% else %}
+        <h1>Welcome to Sticky Notes!</h1>
+        <h3>Please Log In or Register</h3>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'the_app/base.html' %}
+
+{% block title %}Delete User - Sticky Notes{% endblock %}
+
+{% block content %}
+<h2>Delete User</h2>
+<p>Are you sure you want to delete {{ user.username }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Delete User</button>
+</form>
+{% endblock %}

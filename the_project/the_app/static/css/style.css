@@ -1,0 +1,44 @@
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+}
+.header {
+    background-color: rgba(0, 0, 0, 0.7); 
+    padding: 20px;
+    border-radius: 8px;
+    color: #fff;
+    text-align: center;
+}
+/* Alert messages */
+.alert {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+}
+
+.alert-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border-color: #d6e9c6;
+}
+
+.alert-error {
+    background-color: #f2dede;
+    color: #a94442;
+    border-color: #ebccd1;
+}
+
+.alert-error {
+    background-color: #f2dede;
+    color: #a94442;
+    border-color: #ebccd1;
+}
